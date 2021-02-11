@@ -7,8 +7,8 @@ const carouselContainer = carouselId?.getElementsByClassName("container")[0];
 function carouselCalculateOffset() { 
     const carouselOffset = carouselContainer.getBoundingClientRect().left;
     // console.log(carouselOffset);
-     carouselItems.style.paddingLeft = '${carouselOffset - 16}px';
-    carouselItems.style.paddingRight = '${carouselOffset - 16}px';
+    carouselItems.style.paddingLeft = `${carouselOffset - 16}px`;
+    carouselItems.style.paddingRight = `${carouselOffset - 16}px`;
 }
 
 function slide(wrapper, items) {
@@ -31,7 +31,7 @@ function slide(wrapper, items) {
     items.addEventListener("touchmove", dragAction);
     items.addEventListener("transitionend", checkIndex);
 
-    function dragStart (e){
+    function dragStart(e) {
         e = e || window.event;
         e.preventDefault();
         posInitial = items.offsetLeft;
@@ -57,7 +57,7 @@ function slide(wrapper, items) {
             posX1 = e.clientX;
         }
 
-        items.style.left = '${items.offsetLeft - posX2}px';
+        items.style.left = `${items.offsetLeft - posX2}px`;
     }
 
     function dragEnd() {
@@ -72,7 +72,7 @@ function slide(wrapper, items) {
         }
 
         document.onmouseup = null;
-        document.onmousedown = null;
+        document.onmousemove = null;
     }
 
     function shiftSlide (direction, action){
@@ -82,10 +82,10 @@ function slide(wrapper, items) {
                 posInitial = items.offsetLeft;
             }
             if(direction == 1){
-                items.style.left = '${posInitial - slideSize}px';
+                items.style.left = `${posInitial - slideSize}px`;
                 index++;
             }else if(direction == -1){
-                items.style.left = '${posInitial + slideSize}px';
+                items.style.left = `${posInitial + slideSize}px`;
                 index--; 
             }
         }
